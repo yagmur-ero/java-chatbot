@@ -9,6 +9,13 @@
             "name": "CvReader",
             "request": "launch",
             "mainClass": "chatbot.cv.CvReader",
+            "projectName": "ai-chatbot"
+        },
+        {
+            "type": "java",
+            "name": "CvReader",
+            "request": "launch",
+            "mainClass": "chatbot.cv.CvReader",
             "projectName": "my-app"
         },
         {
