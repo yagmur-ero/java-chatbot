@@ -14,8 +14,11 @@ import org.apache.pdfbox.text.PDFTextStripper;
 public class CvReader {
 
     public static void main(String[]args) throws IOException{
-        File file = new File("C:/Users/Yağmur/OneDrive/Desktop/Yeni klasör (2)/Yağmur_Erocağı_CV.pdf");
-
+          if (args.length == 0) {
+            System.out.println("C:/Users/Yağmur/OneDrive/Desktop/Yeni klasör (2)/Yağmur_Erocağı_CV.pdf");
+            return;
+        }
+        
         try (PDDocument document = Loader.loadPDF(file)) {
             PDFTextStripper stripper = new PDFTextStripper();
             String text = stripper.getText(document);
@@ -50,8 +53,8 @@ public class CvReader {
                 if(sections.get(key).length()<50){
                     weakSections.add(key);
                 }
-                System.out.println("You are missing " + key + " this part!");
             }
+            System.out.println("You are missing " + weakSections + " this part!");
         }
 
     }

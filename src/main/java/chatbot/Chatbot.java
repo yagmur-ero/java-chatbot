@@ -44,13 +44,19 @@ public Chatbot(){
         if(shortCuts.containsKey(input2)){
             return shortCuts.get(input2);
         }
-        
+        boolean hasPositive = false;
+        boolean hasNegative = false;
+
         for(String i : split){
-            if(negativeWords.contains(i)){
+            
+            if(negativeWords.contains(i)) hasNegative = true;
+            else if(positiveWords.contains(i))hasPositive = true;
+
+            if(hasNegative){
                 return("I'm sorry that you're in a bad mood right now!");
-            }else if(positiveWords.contains(i)){
+            }else if(hasPositive){
                 return("I'm happy to hear that you're good :)");
-            }else if(negativeWords.contains(i) && positiveWords.contains(i)){
+            }else if(hasNegative && hasPositive){
                 return("I couldn't understand what you're trying to mean :(");
             }
         } 
