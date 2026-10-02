@@ -15,9 +15,14 @@ public class CvReader {
 
     public static void main(String[]args) throws IOException{
           if (args.length == 0) {
-            System.out.println("C:/Users/Yağmur/OneDrive/Desktop/Yeni klasör (2)/Yağmur_Erocağı_CV.pdf");
+            System.out.println("Usage: CVReader <pdf-path>");
             return;
         }
+        File file = new File(args[0]);
+          if(!file.exists()){
+                System.out.println("There is no files that i can check!");
+                return;
+            }
         
         try (PDDocument document = Loader.loadPDF(file)) {
             PDFTextStripper stripper = new PDFTextStripper();
@@ -54,7 +59,7 @@ public class CvReader {
                     weakSections.add(key);
                 }
             }
-            System.out.println("You are missing " + weakSections + " this part!");
+            System.out.println("These sections are too short: " + weakSections);
         }
 
     }
